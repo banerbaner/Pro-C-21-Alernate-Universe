@@ -36,17 +36,7 @@ function setup() {
   bol6.scale = 0.1;
   bol7.scale = 0.1;
   bol8.scale = 0.1;
-  /*
-    bol0.debug = true;
-    bol1.debug = true;
-    bol2.debug = true;
-    bol3.debug = true;
-    bol4.debug = true;
-    bol5.debug = true;
-    bol6.debug = true;
-    bol7.debug = true;
-    bol8.debug = true;
-  */
+
   bol0.setCollider('circle', 0, 0, sunSize);
   bol1.setCollider('circle', 0, 0, 120);
   bol2.setCollider('circle', 0, 0, 120);
@@ -103,24 +93,15 @@ function draw() {
     bol0.scale = sunnySize;
   }
 
-  if (bol1.isTouching(bol0)) {
-    bol1.destroy();
-  }
-  if (bol2.isTouching(bol0)) {
-    bol2.destroy();
-  } if (bol3.isTouching(bol0)) {
-    bol3.destroy();
-  } if (bol4.isTouching(bol0)) {
-    bol4.destroy();
-  } if (bol5.isTouching(bol0)) {
-    bol5.destroy();
-  } if (bol6.isTouching(bol0)) {
-    bol6.destroy();
-  } if (bol7.isTouching(bol0)) {
-    bol7.destroy();
-  } if (bol8.isTouching(bol0)) {
-    bol8.destroy();
-  }
+  checkTouch(bol1);
+  checkTouch(bol2);
+  checkTouch(bol3);
+  checkTouch(bol4);
+  checkTouch(bol5);
+  checkTouch(bol6);
+  checkTouch(bol7);
+  checkTouch(bol8);
+
 
 
   bol0.addImage("pic0", pics0);
@@ -134,4 +115,10 @@ function draw() {
   bol8.addImage("pic8", pics8);
 
   drawSprites();
+}
+
+function checkTouch(planet) {
+  if (planet.isTouching(bol0)) {
+    planet.destroy();
+  }
 }
